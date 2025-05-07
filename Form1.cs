@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        Byte TurnsNumber = 0;
+        Byte TurnsNumber;
 
         void SwitchTurns(PictureBox pb)
         {
@@ -33,7 +33,9 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Wrong Choice", "Wrong Choice", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-           
+
+            ++TurnsNumber;
+
             if (lblTurn.Tag.ToString() == "Player 1")
             {
                 pb.Image = Resources.X;
@@ -74,7 +76,13 @@ namespace WindowsFormsApp1
 
         }
 
-        
+        void CheckButtonsMatch(PictureBox PictureBox1, PictureBox PictureBox2, PictureBox PictureBox3)
+        {
+            if (PictureBox1.Tag.ToString() == PictureBox2.Tag.ToString() && PictureBox2.Tag.ToString() == PictureBox3.Tag.ToString())
+            {
+                GameOver(PictureBox1, PictureBox2, PictureBox3);
+            }
+        }
 
         void CheckWinner()
         {
@@ -84,46 +92,15 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            if (pb1.Tag.ToString() == pb2.Tag.ToString() && pb2.Tag.ToString() == pb3.Tag.ToString())
-            { 
-                GameOver(pb1, pb2, pb3);
-            }
+            CheckButtonsMatch(pb1, pb2, pb3);
+            CheckButtonsMatch(pb4, pb5, pb6);
+            CheckButtonsMatch(pb7, pb8, pb9);
+            CheckButtonsMatch(pb1, pb4, pb7);
+            CheckButtonsMatch(pb2, pb5, pb8);
+            CheckButtonsMatch(pb3, pb6, pb9);
+            CheckButtonsMatch(pb1, pb5, pb9);
+            CheckButtonsMatch(pb3, pb5, pb7);
 
-            if (pb4.Tag.ToString() == pb5.Tag.ToString() && pb5.Tag.ToString() == pb6.Tag.ToString())
-            {
-                GameOver(pb4, pb5, pb6);
-
-            }
-
-            if (pb7.Tag.ToString() == pb8.Tag.ToString() && pb8.Tag.ToString() == pb9.Tag.ToString())
-            {
-                GameOver(pb7, pb8, pb9);
-            }
-
-            if (pb1.Tag.ToString() == pb5.Tag.ToString() && pb5.Tag.ToString() == pb9.Tag.ToString())
-            {
-                GameOver(pb1, pb5, pb9);
-            }
-
-            if (pb3.Tag.ToString() == pb5.Tag.ToString() && pb5.Tag.ToString() == pb7.Tag.ToString())
-            {
-                GameOver(pb3, pb5, pb7);
-            }
-
-            if (pb1.Tag.ToString() == pb4.Tag.ToString() && pb4.Tag.ToString() == pb7.Tag.ToString())
-            {
-                GameOver(pb1, pb4, pb7);
-            }
-
-            if (pb2.Tag.ToString() == pb5.Tag.ToString() && pb5.Tag.ToString() == pb8.Tag.ToString())
-            {
-                GameOver(pb2, pb5, pb8);
-            }
-
-            if (pb3.Tag.ToString() == pb6.Tag.ToString() && pb6.Tag.ToString() == pb9.Tag.ToString())
-            {
-                GameOver(pb3, pb6, pb9);
-            }
         }
 
         void CheckDraw()
@@ -141,6 +118,13 @@ namespace WindowsFormsApp1
 
                 MessageBox.Show("Game Over", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        void UpdateStatus(PictureBox Pb)
+        {
+            SwitchTurns(Pb);
+            CheckWinner();
+            CheckDraw();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -165,74 +149,47 @@ namespace WindowsFormsApp1
 
         private void pb1_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb2_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb3_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb4_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb5_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb6_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb7_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb8_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void pb9_Click(object sender, EventArgs e)
         {
-            ++TurnsNumber;
-            SwitchTurns((PictureBox)sender);
-            CheckWinner();
-            CheckDraw();
+            UpdateStatus((PictureBox)sender);
         }
 
         private void btnRestartGame_Click(object sender, EventArgs e)
