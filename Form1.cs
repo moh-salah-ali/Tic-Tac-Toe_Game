@@ -118,6 +118,7 @@ namespace WindowsFormsApp1
 
                 MessageBox.Show("Game Over", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
 
         void UpdateStatus(PictureBox Pb)
@@ -125,6 +126,11 @@ namespace WindowsFormsApp1
             SwitchTurns(Pb);
             CheckWinner();
             CheckDraw();
+        }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            UpdateStatus((PictureBox)sender);
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -143,53 +149,6 @@ namespace WindowsFormsApp1
             e.Graphics.DrawLine(pen, 550, 150, 550, 510);
             e.Graphics.DrawLine(pen, 700, 150, 700, 510);
 
-        }
-
-        
-
-        private void pb1_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb2_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb3_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb4_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb5_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb6_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb7_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb8_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
-        }
-
-        private void pb9_Click(object sender, EventArgs e)
-        {
-            UpdateStatus((PictureBox)sender);
         }
 
         private void btnRestartGame_Click(object sender, EventArgs e)
